@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Portfolio.Client.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Portfolio.Client.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Home\\RiderProjects\\Portfolio\\Portfolio.Client\\wwwroot\\img\\computer-icons-learning-education-symbol-reading-png-favpng-NeTF4KhZEQ04KQCa8brRpiG1d-removebg-preview.png",
+      "PackagePath": "staticwebassets\\img\\computer-icons-learning-education-symbol-reading-png-favpng-NeTF4KhZEQ04KQCa8brRpiG1d-removebg-preview.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Portfolio.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Portfolio.Client.props",
+      "PackagePath": "build\\Portfolio.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Portfolio.Client.props",
+      "PackagePath": "buildMultiTargeting\\Portfolio.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Portfolio.Client.props",
+      "PackagePath": "buildTransitive\\Portfolio.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

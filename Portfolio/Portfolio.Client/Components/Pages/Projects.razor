@@ -1,0 +1,86 @@
+@page "/projects"
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@using Portfolio.Client.Models
+@inject IHttpClientFactory ClientFactory
+<html data-bs-theme="light" style>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Projects - Portfolio Front</title>
+    <meta name="description" content="My Portfolio" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top portfolio-navbar gradient navbar-dark" style=" background: #000000; ">
+        <div class="container"><a class="navbar-brand logo" href="#">Baptiste Luciani</a><button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div id="navbarNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page projets-page" style="padding-bottom: 100px;padding-top: 100px;">
+        <section class="portfolio-block project-no-images">
+            <div class="container py-4 py-xl-5">
+                <div class="row mb-5">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
+                        <h2>Projects</h2>
+                        <p class="w-lg-50">List of my projects.</p>
+                    </div>
+                </div>
+                <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                @foreach (var project in ProjectsList)
+                {
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body p-4">
+                                    <div class="bs-icon-md bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center d-inline-block mb-3 bs-icon"><svg class="bi bi-github" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8"></path>
+                                    </svg></div>
+                                    <h4 class="card-title">@project.full_name</h4>
+                                    <p class="card-text">@project.description</p><button class="btn btn-primary" type="button">Watch 🦜</button>
+                                </div>
+                            </div>
+                        </div>
+                }
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="text-center">
+            <div class="container text-muted py-4 py-lg-5">
+                <ul class="list-inline">
+                    <li class="list-inline-item me-4"><a class="link-secondary" href="https://github.com/S0dlive">Github</a></li>
+                    <li class="list-inline-item me-4"><a class="link-secondary" href="/Projects">Projects</a></li>
+                    <li class="list-inline-item"><a class="link-secondary" href="https://fr.fiverr.com/bptlcn?up_rollout=true">Fiverr</a></li>
+                </ul>
+                <p class="mb-0">Copyright © 2024 Baptiste Luciani</p>
+            </div>
+        </footer>
+</body>
+
+</html>
+
+@code {
+    List<Root> ProjectsList = new List<Root>();
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        var client = ClientFactory.CreateClient();
+        client.DefaultRequestHeaders.Add("User-Agent", "t");
+        var result = await client.GetAsync(
+            "https://api.github.com/users/s0dlive/repos");
+        if (result.IsSuccessStatusCode)
+        {
+            var data = await result.Content.ReadAsStringAsync();
+            List<Root> root = JsonSerializer.Deserialize<List<Root>>(data);
+            if (root != null)
+            {
+                ProjectsList = root;
+            }
+        }
+    }
+}
